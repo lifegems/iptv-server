@@ -20,9 +20,13 @@ ATV.start({
 	menu: {
 		items: [{
 			id: 'home',
-			name: 'Home',
+			name: 'Streaming',
 			page: HomePage,
 			attributes: { autoHighlight: true }
+		}, {
+			id: 'movies',
+			name: 'Video on Demand',
+			page: MoviesPage
 		}]
 	},
 	templates: {
