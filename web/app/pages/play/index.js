@@ -20,8 +20,9 @@ var PlayPage = ATV.Page.create({
     name: 'play',
     ready(options, resolve, reject) {
     	// get the asset id to load video stream
-    	/*let assetId = options.id;*/
-		let sampleStream = sampleStreams[_.random(0, upperBoundIndex)];
+		 /*let assetId = options.id;*/
+		// let opts = JSON.parse(options);
+		let sampleStream = options;//sampleStreams[_.random(0, upperBoundIndex)];
 		let player = new Player();
 		let mediaItem = new MediaItem('video', sampleStream);
 		let playlist = new Playlist();

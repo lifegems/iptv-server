@@ -5,34 +5,41 @@ import staticData from 'lib/static-data-generator';
 
 var HomePage = ATV.Page.create({
 	name: 'home',
-	template: template,
-	ready(options, resolve, reject) {
-		// get data from multiple requests
-		/*let getPopularMovies = ATV.Ajax.get(API.popularMovies);
-		let getPopularTvShows = ATV.Ajax.get(API.popularTvShows);*/
-
-		// Then resolve them at once
-		/*Promise
-			.all([getPopularMovies, getPopularTvShows])
-			.then((xhrs) => {
-				let movies = xhrs[0].response;
-				let tvShows = xhrs[1].response;
-
-				resolve({
-					movies: movies.results,
-					tvShows: tvShows.results
-				});
-			}, (xhr) => {
-				// error
-				reject();
-			});*/
-		
-		// for demo using static content
-		resolve({
-			movies: staticData(12),
-			tvShows: staticData(12)
-		});
-	}
+	data(data) { return data[0]; },
+	template: (data) => {
+		const media = data.media.map(type => {
+			const streamSrc = `http://usa.iptv.stream.jw.org${type.source}`;
+			const imgSrc = `http://usa.iptv.stream.jw.org${type.image_source}`;
+			return `
+			<lockup data-href-page="play" data-href-page-options='"${streamSrc}"'>
+				<img class="tile_compact" src="${imgSrc}"/>
+				<title class="showAndScrollTextOnHighlight">${type.title}</title>
+			</lockup>`;
+		}).reduce((strMedia, item) => strMedia + item, "");
+		return `
+		<document>
+			<catalogTemplate theme="light">
+				<banner>
+					<title>${data.name}</title>
+				</banner>
+				<list>
+					<section>
+						<listItemLockup>
+							<title class="scrollTextOnHighlight">${data.name}</title>
+							<relatedContent>
+								<grid>
+									<section>
+										${media}
+									</section>
+								</grid>
+							</relatedContent>
+						</listItemLockup>
+					</section>
+				</list>
+			</catalogTemplate>
+		</document>`;
+	},
+	url: 'http://usa.iptv.stream.jw.org/api/v1/category?locale=en',
 });
 
 export default HomePage;

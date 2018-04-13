@@ -37,6 +37,12 @@ const helpers = {
 	poster_url(size) {
 		return new Handlebars.SafeString(`${imageBaseUrl}${size}`);
 	},
+	cover_url(image) {
+		return `http://usa.iptv.stream.jw.org${image}`;
+	},
+	video_src(stream) {
+		return `http://usa.iptv.stream.jw.org${stream}`;
+	},
 	duration(duration) {
 		return new Handlebars.SafeString(formatDuration(duration));
 	},

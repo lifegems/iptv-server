@@ -1,28 +1,20 @@
 <document>
-	<stackTemplate theme="light">
-		<collectionList>
-			<shelf>
-				<header><title>Popular Movies</title></header>
-				<section>
-					{{#each movies }}
-					<lockup data-href-page="movie-details" data-href-page-options="{{toJSON this }}">
-						<img class="tile" src="{{poster_url poster_path }}"/>
-						<title class="showAndScrollTextOnHighlight">{{ title }}</title>
-					</lockup>
-					{{/each}}
-				</section>
-			</shelf>
-			<shelf>
-				<header><title>Popular TV Shows</title></header>
-				<section>
-					{{#each tvShows }}
-					<lockup data-href-page="tvshow-details" data-href-page-options="{{toJSON this }}">
-						<img class="tile" src="{{poster_url poster_path }}"/>
-						<title class="showAndScrollTextOnHighlight">{{ title }}</title>
-					</lockup>
-					{{/each}}
-				</section>
-			</shelf>
-		</collectionList>
-	</stackTemplate>
+	<catalogTemplate theme="light">
+		<banner>
+			<title>Home</title>
+		</banner>
+		<list>
+			<section>
+				<listItemLockup>
+					<title class="scrollTextOnHighlight">Streaming</title>
+				</listItemLockup>
+				<listItemLockup>
+					<title class="scrollTextOnHighlight">Video On Demand</title>
+				</listItemLockup>
+				<listItemLockup>
+					<title class="scrollTextOnHighlight">Audio</title>
+				</listItemLockup>
+			</section>
+		</list>
+	</catalogTemplate>
 </document>

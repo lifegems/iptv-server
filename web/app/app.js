@@ -23,14 +23,6 @@ ATV.start({
 			name: 'Home',
 			page: HomePage,
 			attributes: { autoHighlight: true }
-		}, {
-			id: 'movies',
-			name: 'Movies',
-			page: MoviesPage
-		}, {
-			id: 'tvshows',
-			name: 'TV Shows',
-			page: TvShowsPage
 		}]
 	},
 	templates: {
