@@ -4,7 +4,8 @@
   "description": "A boilerplate for bootstrapping AppleTV apps using atvjs.",
   "main": "index.js",
   "scripts": {
-    "start": "gulp"
+    "start": "gulp",
+    "build-prd": "gulp build --t production"
   },
   "repository": {
     "type": "git",
